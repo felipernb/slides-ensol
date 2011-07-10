@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+<title>Software Livre em aplicações Web de larga escala</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="js/highcharts.js"></script>
+	<script type="text/javascript">
+	
+		var chart;
+		var drawChart = function() {
+			chart = new Highcharts.Chart({
+				chart: {
+					renderTo: 'container',
+					defaultSeriesType: 'spline',
+					inverted: false,
+					width: 500,
+					style: {
+						margin: '0 auto'
+					}
+				},
+				title: {
+					text: ''
+				},
+				xAxis: {
+					reversed: false,
+					title: {
+						enabled: true,
+						text: 'Requests'
+					},
+					maxPadding: 0.05,
+				},
+				yAxis: {
+					title: {
+						text: 'Time/Request'
+					},
+					lineWidth: 2
+				},
+				plotOptions: {
+					spline: {
+						marker: {
+							enable: false
+						}
+					}
+				},
+				series: [{
+					name: 'Escalável',
+					data: [[0, 12], [10, 23], [20, 27], [30, 29], [40, 30], [50, 31], [60, 32], [70, 33], [80, 33], [90, 34], [100, 35]]
+				}, 
+				{
+					name: 'Não escalável',
+					data: [[0, 3], [10, 13], [20, 23], [30, 33], [40, 43], [50, 53], [60, 63], [70, 73], [80, 83], [90, 93], [100, 103]]
+				}]
+			});
+			
+			
+		};
+			
+	</script>
+</head>
+<body>
+<!-- Content -->
+
+<section>
+    <h1>Software Livre<em>em aplicações Web de larga escala</em></h1>
+    <footer>by <a href="http://twitter.com/felipernb">@felipernb</a></footer>
+</section>
+
+<section>
+    <h2>Quem sou eu?</h2>
+	<ul class="text_list">
+		<li>Formado em Ciência da Computação pela UFCG</li>
+		<li>Atualmente trabalhando como engenheiro de front-end da rede social espanhola Tuenti</li>
+	</ul>
+	
+</section>
+<section>
+	<h1>Tuenti</h1>
+</section>
+<section class="fullscreen">
+	<img src="pics/spain_map.jpg"/>
+</section>
+
+<section class="fullscreen">
+	<img src="pics/tuenti.jpg"/>
+</section>
+
+<section id="mobile_devices">
+	<table>
+		<tr>
+			<td><img src="pics/iphone.jpg"/></td>
+			<td><img src="pics/android.png"/></td>
+			<td><img src="pics/blackberry.jpg"/></td>
+		</tr>
+	</table>
+	</section>
+
+<section class="fullscreen">
+	<img src="pics/tu.png"/>
+</section>
+
+<section class="rotated_images">
+	<img style="-moz-transform-origin:top right;-moz-transform:translate(470px, -20px) rotate(10deg);-webkit-transform-origin:top right;-webkit-transform: translate(470px, -20px) rotate(10deg);" src="pics/IMG_1361.jpg"/>
+	<img style="-moz-transform-origin:bottom left;-moz-transform:translate(100px, 170px) rotate(8deg);-webkit-transform: translate(100px, 170px) rotate(8deg);" src="pics/IMG_1364.jpg"/>
+	<img style="-moz-transform-origin:top left;-moz-transform:translate(20px, -50px) rotate(-13deg);-webkit-transform-origin:top left;-webkit-transform: translate(20px, -50px) rotate(-13deg); width:400px;" src="pics/IMG_1426.jpg"/>
+	<img style="-moz-transform-origin:bottom right;-moz-transform:translate(430px, 180px) rotate(-5deg);-webkit-transform-origin:bottom right;-webkit-transform: translatex(430px, 180px) rotate(-5deg);" src="pics/TUENTI_team.jpg"/>
+	
+</section>
+
+<section class="fullscreen">
+	<video controls src="chairracing.webm"></video>
+</section>
+<section>
+    <h2>Tuenti</h2>
+	<ul class="text_list">
+		<li>10M usuários</li>
+		<li>46Gbps de tráfico em horários de pico</li>
+		<li>~90min/dia/usuário</li>
+		<li>&gt; 1B hits/dia na Web</li>
+		<li>&gt; 35M hits/dia mobile</li>
+		<li>&gt; 4M fotos/dia</li>
+	</ul>
+</section>
+
+<section>
+    <ul class="features">
+        <li>O que é escalabilidade?</li>
+		<li><em>Escalabilidade ≠ Performance</em></li>
+    </ul>
+</section>
+
+<section>
+	<ul class="text_list">
+		<li>Performance = tempo de resposta</li>
+		<li>Escalabilidade = vazão</li>
+	</ul>
+</section>
+
+<section>
+	<h2>Escalabilidade</h2>
+	<p>Um sistema escalável é aquele que mantém um tempo de resposta aceitável, mesmo com o crescimento da demanda</p>
+</section>
+
+<section>
+	<div id="container" style="width: 700px; height: 400px; margin: 0 auto"></div>
+</section>
+
+<section>
+    <h2 style="left: 20px;">2 maneiras de escalar:</h2>
+    <ul class="features">
+        <li>Verticalmente<em>mais limitado</em></li>
+        <li>Horizontalmente<em>mais complexo</em></li>
+    </ul>
+</section>
+<section>
+    <h2 style="left: 20px;">Escalar verticalmente </h2>
+    <ul class="features" >
+        <li>hardware<span style='font-family:arial'>++</span><em>Física é um problema</em></li>
+    </ul>
+</section>
+
+<section>
+    <h2 style="left: 20px;">Escalar horizontalmente </h2>
+    <ul class="text_list" >
+        <li>* componentes distribuídos</li>
+		<li>* modelagem de dados adequada e desnormalizada</li>
+    </ul>
+</section>
+
+<section class="fullscreen">
+    <video controls poster="poster.jpg" preload="none" src="http://people.mozilla.com/~prouget/data/videos/china/game.webm"></video>
+    <details>
+        <ul>
+            <li>Everybody has Canvas now
+            <li>Everybody has a fast JS engine
+            <li>Canvas works on mobile!
+            <li>Make you game in Canvas
+        </ul>
+    </details>
+</section>
+
+
+<section>
+    <h2 style="left: 20px;">3 ways:</h2>
+    <ul class="features">
+        <li>JavaScript<em>pixel per pixel</em>
+        <li>SVG SMIL<em>Not well supported</em>
+        <li>CSS3 <em>Animations</em>
+    </ul>
+    <details>
+        These are the only 3 ways to animations something on a web page.
+        JavaScript (via DOM or Canvas), SVG SMIL (works in Firefox, not sure
+        how good are the other browsers), CSS3 Animations: something new, first
+        implemented in Webkit: create animation in CSS.
+    </details>
+</section>
+
+<section>
+    <a class="site" href="http://animatable.com/demos/madmanimation/">animatable.com</a>
+</section>
+
+<section class="fullscreen">
+    <video controls poster="poster.jpg" preload="none" src="http://people.mozilla.com/~prouget/data/videos/china/anim.webm"></video>
+    <details>
+        <ul>
+            <li>Based on CSS3 animations (in Firefox Aurora)
+            <li>Supported by webkit
+            <li>Can be degradated in a graceful way (see the demo in Fx4)
+            <li>The layout engine take care of the animation (you just set some key frames)
+            <li>It's CSS!!!
+        </ul>
+    </details>
+</section>
+
+<section>
+    <a class="site" href="http://animatable.com/demos/madmanimation/">animatable.com</a>
+</section>
+
+
+
+<!-- Style -->
+
+<style>
+  /* Transition effect */
+  section {
+      -moz-transition: top 400ms linear 0s;
+      -webkit-transition: top 400ms linear 0s;
+      -o-transition: top 400ms linear 0s;
+      -ms-transition: top 400ms linear 0s;
+      transition: top 400ms linear 0s;
+  }
+  section { top: -150%; }
+  section[aria-selected] { top: 0; }
+  section[aria-selected] ~ section { top: +150% }
+
+  @font-face { src: url(fonts/BebasNeue.otf); font-family: 'bebas'; }
+  a { color: inherit; }
+  a:hover {text-decoration: underline;}
+  body { font-family: 'bebas'; }
+  html { background-color: black; }
+  body { background-color: white; }
+  section > * { position: absolute; }
+
+  .rotated_images > img  {
+    -moz-box-shadow: 5px 5px 5px #333; 
+	-webkit-box-shadow: 5px 5px 5px #333;
+	width:300px;	 
+
+  }
+ 
+  #mobile_devices img {
+	width:240px;
+	margin:10px;
+  }
+
+  mark {
+    position: absolute;
+    top: 250px; left: 0;
+    display: block;
+    height: 100px;
+    width: 100px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-size: 90px;
+  }
+  
+  #container {
+	top:120px;
+  }
+  .text_list, .features, p {
+      top: 250px;
+      left: 150px;
+      color: #C01801;
+      font-size: 70px;
+      list-style: none;
+  }
+
+  .text_list, p {
+	font-size:40px;
+}
+
+  .text_list li, .features li {
+      position: relative;
+  }
+  .text_list em, .features em, p em {
+      color: #ccc;
+      font-style: normal;
+      font-size: 40px;
+      display: inline-block;
+      text-align: right;
+  }
+
+  section:first-of-type h1 {
+    font-size: 130px;
+    padding-top: 10px;
+    font-weight: normal;
+    top: 10px;
+    left: 20px;
+    width: 780px;
+    line-height: 160px;
+  }
+  section:first-of-type h2 {
+      font-size: 63px;
+  }
+
+  .site, h1 {
+      top: 0;
+      left: 150px;
+      font-size: 75px;
+      line-height: 600px;
+      vertical-align: middle;
+  }
+  h1 > em {
+      display: block;
+      text-align: left;
+      margin-top: -40px;
+      font-size: 40px;
+      line-height: 40px;
+      font-style: normal;
+  }
+
+  footer {
+    display: block;
+    text-align: right;
+    color: #C01801;
+    font-style: normal;
+    font-size: 60px;
+    bottom: 0; right: 10px;
+  }
+
+  img {
+      top: 150px;
+      left: 8px;
+      width: 290px;
+  }
+
+  .fullscreen > img,
+  .fullscreen > video {
+      top: 0px;
+      right: 0px;
+      width: 800px;
+      height: 600px;
+      display: block;
+  }
+  .fullscreen {
+      background-color: black;
+  }
+
+
+  #ten {
+    color: #C01801;
+    font-size: 150px;
+    vertical-align: bottom;
+    letter-spacing: -15px;
+    display: block;
+    position: absolute;;
+    left: 0px;
+    bottom: 25px;
+  }
+
+  h2 {
+      top: 150px;
+      font-size: 65px;
+      line-height: 60px;
+      padding-left: 130px;
+  }
+</style>
+
+<!-- {{{{ *****************  DZSlides CORE 2.0b1 *************************** -->
+<!-- *********************************************************************** -->
+<!-- *********************************************************************** -->
+<!-- *********************************************************************** -->
+<!-- *********************************************************************** -->
+
+<!-- This block of code is not supposed to be edited, but if you want to change the behavior of the slides, feel free to hack it ;) -->
+
+<!-- Default Style -->
+<style>
+  * { margin: 0; padding: 0; }
+  details {display: none;}
+  body {
+    width: 800px; height: 600px;
+    margin-left: -400px; margin-top: -300px;
+    position: absolute; top: 50%; left: 50%;
+    overflow: hidden;
+  }
+  section {
+    position: absolute;
+    pointer-events: none;
+    width: 100%; height: 100%;
+  }
+  section[aria-selected] { pointer-events: auto;}
+  body {display: none}
+  body.loaded {display: block}
+</style>
+
+<script>
+  var friendWindows = [];
+  var idx = 1;
+  var slides;
+
+  /* main() */
+
+  window.onload = function() {
+    slides = document.querySelectorAll("body > section");
+    onhashchange();
+    setSlide();
+    document.body.className = "loaded";
+    onresize();
+  }
+
+  /* Handle keys */
+
+  window.onkeydown = function(e) {
+    // Don't intercept keyboard shortcuts
+    if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) {
+      return;
+    }
+    if ( e.keyCode == 37 // left arrow
+      || e.keyCode == 33 // page up
+	  || e.keyCode == 38 // up arrow
+    ) {
+      e.preventDefault();
+      back();
+    }
+    if ( e.keyCode == 39 // right arrow
+      || e.keyCode == 34 // page down
+	  || e.keyCode == 40 //down arrow
+    ) {
+      e.preventDefault();
+      forward();
+    }
+
+    if ( e.keyCode == 32) { // space
+        e.preventDefault();
+        toggleContent();
+    }
+  }
+
+  /* Adapt the size of the slides to the window */
+
+  window.onresize = function() {
+    var sx = document.body.clientWidth / window.innerWidth;
+    var sy = document.body.clientHeight / window.innerHeight;
+    var transform = "scale(" + (1/Math.max(sx, sy)) + ")";
+    document.body.style.MozTransform = transform;
+    document.body.style.WebkitTransform = transform;
+    document.body.style.OTransform = transform;
+    document.body.style.msTransform = transform;
+    document.body.style.transform = transform;
+  }
+  function getDetails(idx) {
+    var s = document.querySelector("section:nth-of-type("+ idx +")");
+    var d = s.querySelector("details");
+    return d?d.innerHTML:"";
+  }
+  window.onmessage = function(e) {
+    msg = e.data;
+    win = e.source;
+    if (msg === "register") {
+      friendWindows.push(win);
+      win.postMessage(JSON.stringify({method: "registered", title: document.title, count: slides.length}), document.location);
+      win.postMessage(JSON.stringify({method: "newslide", details: getDetails(idx), idx: idx}), document.location);
+      return;
+    }
+    if (msg === "back") back();
+    if (msg === "forward") forward();
+    if (msg === "toggleContent") toggleContent();
+    // setSlide(42)
+    var r = /setSlide\((\d+)\)/.exec(msg);
+    if (r) {
+        idx = r[1];
+        setSlide();
+    }
+  }
+
+  /* If a Video is present in this new slide, play it.
+     If a Video is present in the previous slide, stop it. */
+
+  function toggleContent() {
+    var s = document.querySelector("section[aria-selected]");
+    if (s) {
+        var video = s.querySelector("video");
+        if (video) {
+            if (video.ended || video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        }
+    }
+  }
+
+  /* If the user change the slide number in the URL bar, jump
+     to this slide. */
+
+  window.onhashchange = function(e) {
+    var newidx = ~~window.location.hash.split("#")[1];
+    if (!newidx) newidx = 1;
+    if (newidx == idx) return;
+    idx = newidx;
+    setSlide();
+  }
+
+  /* Slide controls */
+
+  function back() {
+    if (idx == 1) return;
+    idx--;
+    setSlide();
+  }
+  function forward() {
+    if (idx >= slides.length) return;
+    idx++;
+    setSlide();
+  }
+  function setSlide() {
+    var old = document.querySelector("section[aria-selected]");
+    var next = document.querySelector("section:nth-of-type("+ idx +")");
+    if (old) {
+      old.removeAttribute("aria-selected");
+      var video = old.querySelector("video");
+      if (video) { video.pause(); }
+    }
+    if (next) {
+      next.setAttribute("aria-selected", "true");
+      var video = next.querySelector("video");
+	  if (next.querySelector('#container')) {
+			drawChart();
+	  }
+      if (video) { video.play(); }
+    } else {
+      console.warn("No such slide: " + idx);
+      idx = 0;
+      for (var i = 0; i < slides.length; i++) {
+          if (slides[i].hasAttribute("aria-selected")) {
+              idx = i + 1;
+          }
+      }
+    }
+    window.location.hash = idx;
+    for (var i = 0; i < friendWindows.length; i++) {
+        friendWindows[i].postMessage(JSON.stringify({method: "newslide", details: getDetails(idx), idx: idx}), document.location);
+    }
+  }
+</script>
+</body>
+</html>
+<!-- vim: set fdm=marker: }}} -->
