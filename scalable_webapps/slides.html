@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <head>
 <title>Software Livre em aplicações Web de larga escala</title>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/highcharts.js"></script>
 	<script type="text/javascript">
 	
@@ -75,7 +75,7 @@
 	
 </section>
 <section>
-	<h1>Tuenti</h1>
+	<img src="pics/logo_tuenti_positivo_color.png" id="tuenti_logo"/>
 </section>
 <section class="fullscreen">
 	<img src="pics/spain_map.jpg"/>
@@ -115,10 +115,11 @@
 	<ul class="text_list">
 		<li>10M usuários</li>
 		<li>46Gbps de tráfico em horários de pico</li>
-		<li>~90min/dia/usuário</li>
-		<li>1B<span class='plus_sign'>+</span> hits/dia na Web</li>
-		<li>35M<span class='plus_sign'>+</span> hits/dia mobile</li>
+		<li>~74min/dia/usuário</li>
+		<li>1B<span class='plus_sign'>+</span> hits/dia na Web / 35M<span class='plus_sign'>+</span> mobile</li>
+		<li>~62000 video chats/dia, ~7min = 7200 horas/dia</li>
 		<li>4M<span class="plus_sign">+</span> fotos/dia</li>
+		<li>500<span class="plus_sign">+</span> servidores</li>
 	</ul>
 </section>
 
@@ -148,76 +149,109 @@
 <section>
     <h2 style="left: 20px;">2 maneiras de escalar:</h2>
     <ul class="features">
-        <li>Verticalmente<em>mais limitado</em></li>
-        <li>Horizontalmente<em>mais complexo</em></li>
+        <li>Verticalmente <em>mais limitado</em></li>
+        <li>Horizontalmente <em>mais complexo</em></li>
     </ul>
 </section>
 <section>
     <h2 style="left: 20px;">Escalar verticalmente </h2>
     <ul class="features" >
-        <li>hardware<span class='plus_sign'>++</span><em>Física é um problema</em></li>
+        <li>hardware<span class='plus_sign'>++</span> <em>Física é um problema</em></li>
     </ul>
 </section>
 
 <section>
     <h2 style="left: 20px;">Escalar horizontalmente </h2>
-    <ul class="text_list" >
-        <li>* componentes distribuídos</li>
-		<li>* modelagem de dados adequada e desnormalizada</li>
+    <ul class="text_list square_marker" >
+        <li>componentes distribuídos</li>
+		<li>modelagem de dados adequada e desnormalizada</li>
     </ul>
 </section>
 
+<section class="tools">
+	<h2 style="left: 20px;">Que ferramentas são usadas?</h2>
+</section>
+
+<section>
+	<p class="text_slide_p">O sistema operacional precisa gerenciar bem os recursos:
+	<ul class="features2 linux-background" >
+		<li>Memória</li>
+		<li>Sockets</li>
+		<li>Concorrência</li>
+	</ul>
+	</p>
+	<p class="text_slide_p">Também necessita ser customizável para ajustes de baixo nível</p>
+
+</section>
+<section class="webservers">
+	<h2>Web servers</h2>
+	<p>Web servers precisam ser rápidos, flexíveis e com baixo consumo de recursos</p>
+</section>
+<section>
+	<h2>Armazenamento</h2>
+	<ul class="features">
+		<li>Relacional <em>ex.: MySql</em></li>
+		<li>Não-relacional <em>ex.: HBase, MongoDB</em></li>
+	</ul>
+</section>
+
+<section>
+	<ul class="text_list2">
+		<li>Bancos relacionais escalam (mas não usando a modelagem "clássica")</li>
+		<li>Consultas ao índice de uma tabela têm complexidade logarítmica.</li>
+		<li>Mesmo assim, com N muito grande, se torna lento</li>
+		<li>Solução: Quebrar tabelas grandes em tabelas menores (chamadas partições/shards)</li>
+	</ul>
+</section>
+	
+<section>
+	<h2>Linguagens de programação</h2>
+	<ul class="features">
+		<li>PHP escala? <em>NÃO</em></li>
+		<li>Java escala? <em>NÃO</em></li>
+		<li>Ruby escala? <em>NÃO</em></li>
+		<li>Python escala? <em>NÃO</em></li>
+	</ul>
+</section>
+<section>
+	<ul class=features>
+		<li>Linguagens não escalam.</li>
+		<li>Arquiteturas escalam!</li>
+	</ul>
+</section>
+<section>
+	<h2 class="relative" style="top:80px;">No Tuenti usamos principalmente PHP</h2>
+	<p class="text_slide_p">Mas também usamos:</p>
+	<ul class="features2">
+		<li>Java</li>
+		<li>Erlang</li>
+		<li>C/C<span class="plus_sign">++</span>/Objective-C</li>
+		<li>Python/Shell</li>
+	</ul>
+</section>
+
+<section>
+	<h2>Javascript</h2>
+	<ul class="text_list square_marker">
+		<li>Usuários têm PCs cada dia mais potentes e browsers cada dia mais rápidos</li>
+		<li>Jogar um pouco do processamento para o cliente ajuda a escalar</li>
+	</ul>
+</section>
+
 <section class="fullscreen">
-    <video controls poster="poster.jpg" preload="none" src="http://people.mozilla.com/~prouget/data/videos/china/game.webm"></video>
-    <details>
-        <ul>
-            <li>Everybody has Canvas now
-            <li>Everybody has a fast JS engine
-            <li>Canvas works on mobile!
-            <li>Make you game in Canvas
-        </ul>
-    </details>
+	<img src="pics/javascript_the_good_parts.jpg"/>
 </section>
 
-
-<section>
-    <h2 style="left: 20px;">3 ways:</h2>
-    <ul class="features">
-        <li>JavaScript<em>pixel per pixel</em>
-        <li>SVG SMIL<em>Not well supported</em>
-        <li>CSS3 <em>Animations</em>
-    </ul>
-    <details>
-        These are the only 3 ways to animations something on a web page.
-        JavaScript (via DOM or Canvas), SVG SMIL (works in Firefox, not sure
-        how good are the other browsers), CSS3 Animations: something new, first
-        implemented in Webkit: create animation in CSS.
-    </details>
+<section class="platypus-background">
+	<h2>Javascript</h2>
+	<ul class="text_list square_marker">
+		<li>Sintaxe de Java, com ideias de Lisp (Scheme),  Hypertalk e muita gambiarra</li>
+		<li>Interfaces Web responsivas (Gmail)</li>
+		<li>JSON já virou padrão em outras linguagens</li>
+		<li>Incompatibilidade cross-browser</li>
+	</ul>
 </section>
-
-<section>
-    <a class="site" href="http://animatable.com/demos/madmanimation/">animatable.com</a>
-</section>
-
-<section class="fullscreen">
-    <video controls poster="poster.jpg" preload="none" src="http://people.mozilla.com/~prouget/data/videos/china/anim.webm"></video>
-    <details>
-        <ul>
-            <li>Based on CSS3 animations (in Firefox Aurora)
-            <li>Supported by webkit
-            <li>Can be degradated in a graceful way (see the demo in Fx4)
-            <li>The layout engine take care of the animation (you just set some key frames)
-            <li>It's CSS!!!
-        </ul>
-    </details>
-</section>
-
-<section>
-    <a class="site" href="http://animatable.com/demos/madmanimation/">animatable.com</a>
-</section>
-
-
-
+	
 <!-- Style -->
 
 <style>
@@ -247,10 +281,18 @@
 	width:300px;	 
 
   }
+	.relative {
+	position:relative;
+}
+
+  #tuenti_logo {
+	width:600px;
+	left:100px;
+	}
 
   .plus_sign {
 	font-family:arial;
-}
+	}
  
   #mobile_devices img {
 	width:240px;
@@ -272,21 +314,52 @@
   #container {
 	top:120px;
   }
-  .text_list, .features, p {
+  .text_list, .text_list2, .features, .features2, p {
       top: 250px;
       left: 150px;
       color: #C01801;
       font-size: 70px;
       list-style: none;
+
   }
 
-  .text_list, p {
-	font-size:40px;
+  .text_list, .text_list2, p {
+	font-size:40px;	
 }
-
-  .text_list li, .features li {
-      position: relative;
+.text_list2 {
+	list-style-type:square;
+	top:100px;
+}
+.text_list2 li {
+	padding-bottom:20px;
+}
+ .features2, .text_slide_p {
+	position:relative;
+    list-style-type: square ;
+	top: 100px;
   }
+.square_marker {
+   list-style: square inside;
+}
+.features2 {
+	padding-left: 60px;
+}
+.linux-background {
+		background: url("pics/tux.png") no-repeat scroll 350px top;
+		background-size:200px;
+}
+.platypus-background {
+		background: url("pics/perry_the_platypus.png") no-repeat scroll right top;
+		background-size:300px;
+}
+.tools {
+		background: url("pics/hand-tools.png") no-repeat scroll 450px bottom;
+		background-size:350px;
+}
+.webservers {
+		background: url("pics/webservers.png") no-repeat scroll center 400px;
+}
+p { width: 600px; }
   .text_list em, .features em, p em {
       color: #ccc;
       font-style: normal;
