@@ -203,7 +203,82 @@
 		<li>Solução: Quebrar tabelas grandes em tabelas menores (chamadas partições/shards)</li>
 	</ul>
 </section>
-	
+
+<section>
+	<h2 class="relative">Exemplo - Fotos de usuários</h2>
+	<ul class="text_list square_marker" style="list-style-position:outside;">
+		<li>10M usuários, ~100 fotos/usuário = 1 bilhão de fotos</li>
+		<li>Utilizando 100 como fator de particionamento</li>
+		<li>Fotos do usuário 6590289 vão na tabela: 6590289 % 100 = fotos_89</li>
+	</ul>
+</section>
+
+<section>
+	<h2 class="relative">Exemplo - Mensagens</h2>
+	<ul class="text_list square_marker" style="list-style-position:outside;">
+		<li>Para escalar, tem que desnormalizar!</li>
+		<li>Se repetem dados, nas tabelas "inbox" e "sent"</li>
+		<li>Usuário 3333 envia mensagem para o 5555, com fator de particionamento 50, a mensagem ficaria salva nas tabela: sent_33 e inbox_5</li>
+	</ul>
+</section>
+
+<section>
+	<h2>Memcached</h2>
+	<ul class="text_list square_marker" style="list-style-position:outside;">
+		<li>O principal "segredo" da escalabilidade da maioria dos sites</li>
+		<li>Cache em memória, acessível em um ambiente distribuído</li>
+	</ul>
+</section>
+
+<section>
+	<pre><code>
+<span class="reserved">function</span> get_foo(<span class="variable">foo_id</span>)
+    <span class="variable">foo</span> = memcached_get(<span class="string">"foo:"</span> . <span class="variable">foo_id</span>)
+    <span class="reserved">return <span class="variable">foo</span> if defined <span class="variable">foo</span></span>
+
+    <span class="variable">foo</span> = fetch_foo_from_database(<span class="variable">foo_id</span>)
+    memcached_set(<span class="variable">"foo:"</span> . <span class="variable">foo_id</span>, <span class="variable">foo</span>)
+    <span class="reserved">return</span> <span class="variable">foo</span>
+<span class="reserved">end</span>
+</code></pre>
+</section>
+<section>
+	<ul class="text_list2">
+		<li>Memcached funciona em cima de TCP</li>
+		<li>No Tuenti temos cerca de 90 servidores Memcached, cada um com cerca de 150k conexões abertas</li>
+		<li>Cada conexão TCP tem sua própria thread e buffers</li>
+		<li><a href="https://github.com/tuenti/memcached-tuenti-multiport/commit/50736adb879b687b59918bac2559e3a99116141b">Escrevemos um patch para usar UDP e diminuir consumo de CPU e memória</a></li>
+</section>
+<section>
+	<h2 class="relative">Processamento em batch</h2>
+	<ul class="text_list square_marker">
+		<li>Nem tudo precisa ser em real-time</li>
+		<li>Quando você faz o upload de uma foto no Flickr ou um vídeo no Youtube, o servidor Web coloca seu arquivo na fila para ser processado</li>
+	</ul>
+</section>
+
+<section class="gearman-background">
+	<h2>Gearman</h2>
+</section>
+<section>
+	<pre><code style="top:10px;">
+<span class="comment">//Client</span>
+<span class="variable">client</span> = <span class="reserved">new</span> gearman_client()
+<span class="variable">client</span>.add_server(<span class="string">"10.10.0.2"</span>)
+<span class="variable">client</span>.add_task(<span class="string">"resize"</span>, <span class="variable">image</span>)
+
+<span class="comment">//Worker</span>
+<span class="reserved">function</span> my_resize_function(<span class="variable">image</span>)
+<span class="comment">    //resize image...</span>
+<span class="reserved">end</span>
+
+<span class="variable">worker</span> = new gearman_worker()
+<span class="variable">worker</span>.add_server(<span class="string">"10.10.0.2"</span>)
+<span class="variable">worker</span>.add_function(<span class="string">"resize"</span>, 
+                <span class="variable">my_resize_function</span>)
+<span class="reserved">while</span> (<span class="variable">worker</span>.work());
+</pre></code>
+</section>
 <section>
 	<h2>Linguagens de programação</h2>
 	<ul class="features">
@@ -251,6 +326,44 @@
 		<li>Incompatibilidade cross-browser</li>
 	</ul>
 </section>
+
+<section class="tricks">
+	<h2>Truques de Front-end</h2>
+	<ul class="text_list square_marker">
+		<li>Para otimizar a esperiência do usuário, pense como ele se comporta e carregue antecipadamente o que ele irá ver em breve</li>		
+	</ul>
+	
+</section>
+<section class="tricks">
+	<h2>Truques de Front-end</h2>
+	<ul class="text_list square_marker">
+		<li>Balanceamento de carga no lado cliente. O JavaScript já sabe para qual servidor fazer requisições</li>
+	</ul>
+	
+</section>
+<section class="tricks">
+	<h2>Truques de Front-end</h2>
+	<ul class="text_list square_marker">
+		<li>É importante comprimir e minimizar Javascript e CSS</li>
+		<li>Usar e abusar do cache no cliente, para evitar problemas, versione seus arquivos</li>
+		<li>Usar uma marcação HTML adequada acelera o tempo de renderização do browser</li>
+	</ul>
+	
+</section>
+<section>
+	<h2 class="relative">Mais em: <a href="http://dev.tuenti.com">dev.tuenti.com</a></h2>
+	<ul class="text_list">
+		<li>Slides disponíveis em: <a href="http://feliperibeiro.com/slides/ensol2011">http://feliperibeiro.com/slides/ensol2011</a></li>
+	</ul>
+</section>
+<section>
+	<h2>¡Gracias!</h2>
+	<ul class="text_list">
+		<li>Felipe Ribeiro &lt;felipernb@gmail.com&gt;</li>
+		<li>@felipernb</li>
+	</ul>
+</section>
+		
 	
 <!-- Style -->
 
@@ -281,6 +394,29 @@
 	width:300px;	 
 
   }
+code {
+	font-family: Courier;
+	font-size: 30px;
+	left: 50px;
+	position: relative;
+	top: 150px;
+}
+
+.variable {
+	color: #0AA;
+}
+.string {
+	color: #F0C;
+	
+}
+.comment {
+	color: #AAA;
+	
+}
+.reserved {
+	color: #C00;
+	
+}
 	.relative {
 	position:relative;
 }
@@ -347,6 +483,9 @@
 .linux-background {
 		background: url("pics/tux.png") no-repeat scroll 350px top;
 		background-size:200px;
+}
+.gearman-background {
+		background: url("pics/gearman_stack.png") no-repeat center 250px;
 }
 .platypus-background {
 		background: url("pics/perry_the_platypus.png") no-repeat scroll right top;
