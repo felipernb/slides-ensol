@@ -237,7 +237,7 @@
     <span class="reserved">return <span class="variable">foo</span> if defined <span class="variable">foo</span></span>
 
     <span class="variable">foo</span> = fetch_foo_from_database(<span class="variable">foo_id</span>)
-    memcached_set(<span class="variable">"foo:"</span> . <span class="variable">foo_id</span>, <span class="variable">foo</span>)
+    memcached_set(<span class="string">"foo:"</span> . <span class="variable">foo_id</span>, <span class="variable">foo</span>)
     <span class="reserved">return</span> <span class="variable">foo</span>
 <span class="reserved">end</span>
 </code></pre>
