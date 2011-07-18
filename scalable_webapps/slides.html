@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<meta charset="utf-8">
 <head>
-<title>Software Livre em aplicações Web de larga escala</title>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/highcharts.js"></script>
+	<meta charset="utf-8">
+	<title>Software Livre em aplicações Web de larga escala</title>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/highcharts.js"></script>
 	<script type="text/javascript">
 	
 		var chart;
@@ -57,6 +57,271 @@
 		};
 			
 	</script>
+	<!-- Style -->
+
+	<style type='text/css'>
+	  /* Transition effect */
+	  section {
+	      -moz-transition: top 400ms linear 0s;
+	      -webkit-transition: top 400ms linear 0s;
+	      -o-transition: top 400ms linear 0s;
+	      -ms-transition: top 400ms linear 0s;
+	      transition: top 400ms linear 0s;
+	  }
+	  section { top: -150%; }
+	  section[aria-selected] { top: 0; }
+	  section[aria-selected] ~ section { top: +150% }
+
+	  @font-face { src: url(fonts/BebasNeue.otf); font-family: 'bebas'; }
+	  a { color: inherit; }
+	  a:hover {text-decoration: underline;}
+	  body { font-family: 'bebas'; }
+	  html { background-color: black; }
+	  body { background-color: white; }
+	  section > * { position: absolute; }
+
+	  .rotated_images > img  {
+	    -moz-box-shadow: 5px 5px 5px #333; 
+		-webkit-box-shadow: 5px 5px 5px #333;
+		width:300px;	 
+
+	  }
+	code {
+		font-family: Courier;
+		font-size: 30px;
+		left: 50px;
+		position: relative;
+		top: 150px;
+	}
+	.nyan {
+		background-image: url("pics/nyan.gif");
+		background-size:100%;
+		color:#FFF;
+	}
+	.nyan ul, .nyan p  {
+		color:#FFF;
+	}
+
+	.variable {
+		color: #0AA;
+	}
+	.string {
+		color: #F0C;
+
+	}
+	.comment {
+		color: #AAA;
+
+	}
+	.reserved {
+		color: #C00;
+
+	}
+		.relative {
+		position:relative;
+	}
+
+	  #tuenti_logo {
+		width:600px;
+		left:100px;
+		}
+
+	  .plus_sign {
+		font-family:arial;
+		}
+
+	  #mobile_devices img {
+		width:240px;
+		margin:10px;
+	  }
+
+	  mark {
+	    position: absolute;
+	    top: 250px; left: 0;
+	    display: block;
+	    height: 100px;
+	    width: 100px;
+	    background-color: black;
+	    color: white;
+	    text-align: center;
+	    font-size: 90px;
+	  }
+
+	  #container {
+		top:120px;
+	  }
+	  .text_list, .text_list2, .features, .features2, p {
+	      top: 250px;
+	      left: 150px;
+	      color: #C01801;
+	      font-size: 70px;
+	      list-style: none;
+
+	  }
+
+	  .text_list, .text_list2, p {
+		font-size:40px;	
+	}
+	.text_list2 {
+		list-style-type:square;
+		top:100px;
+	}
+	.text_list2 li {
+		padding-bottom:20px;
+	}
+	 .features2, .text_slide_p {
+		position:relative;
+	    list-style-type: square ;
+		top: 100px;
+	  }
+	.square_marker {
+	   list-style: square inside;
+	}
+	.features2 {
+		padding-left: 60px;
+	}
+	.yuno {
+	    background: url("pics/yuno.jpg") no-repeat scroll center bottom;
+	    background-size: 400px;
+	}
+	.tricks {
+			background: url("pics/johnny_automatic_card_trick.png") no-repeat scroll right bottom;
+			background-size:350px;
+	}
+	.trollface {
+		background: url("pics/trollface.png") no-repeat scroll right bottom;
+		background-size:300px;
+	}
+	.linux-background {
+			background: url("pics/tux.png") no-repeat scroll 350px top;
+			background-size:200px;
+	}
+	.gearman-background {
+			background: url("pics/gearman_stack.png") no-repeat center 250px;
+	}
+	.platypus-background {
+			background: url("pics/perry_the_platypus.png") no-repeat scroll right top;
+			background-size:300px;
+	}
+	.tools {
+			background: url("pics/hand-tools.png") no-repeat scroll 450px bottom;
+			background-size:350px;
+	}
+	.webservers {
+			background: url("pics/webservers.png") no-repeat scroll center 400px;
+	}
+	p { width: 600px; }
+	  .text_list em, .features em, p em {
+	      color: #ccc;
+	      font-style: normal;
+	      font-size: 40px;
+	      display: inline-block;
+	      text-align: right;
+	  }
+
+	  section:first-of-type h1 {
+	    font-size: 130px;
+	    padding-top: 10px;
+	    font-weight: normal;
+	    top: 10px;
+	    left: 20px;
+	    width: 780px;
+	    line-height: 160px;
+	  }
+	  section:first-of-type h2 {
+	      font-size: 63px;
+	  }
+
+	  .site, h1 {
+	      top: 0;
+	      left: 150px;
+	      font-size: 75px;
+	      line-height: 600px;
+	      vertical-align: middle;
+	  }
+	  h1 > em {
+	      display: block;
+	      text-align: left;
+	      margin-top: -40px;
+	      font-size: 40px;
+	      line-height: 40px;
+	      font-style: normal;
+	  }
+
+	  footer {
+	    display: block;
+	    text-align: right;
+	    color: #C01801;
+	    font-style: normal;
+	    font-size: 60px;
+	    bottom: 0; right: 10px;
+	  }
+
+	  img {
+	      top: 150px;
+	      left: 8px;
+	      width: 290px;
+	  }
+
+	  .fullscreen > img,
+	  .fullscreen > video {
+	      top: 0px;
+	      right: 0px;
+	      width: 800px;
+	      height: 600px;
+	      display: block;
+	  }
+	  .fullscreen {
+	      background-color: black;
+	  }
+
+
+	  #ten {
+	    color: #C01801;
+	    font-size: 150px;
+	    vertical-align: bottom;
+	    letter-spacing: -15px;
+	    display: block;
+	    position: absolute;;
+	    left: 0px;
+	    bottom: 25px;
+	  }
+
+	  h2 {
+	      top: 150px;
+	      font-size: 65px;
+	      line-height: 60px;
+	      padding-left: 130px;
+	  }
+	</style>
+
+	<!-- {{{{ *****************  DZSlides CORE 2.0b1 *************************** -->
+	<!-- *********************************************************************** -->
+	<!-- *********************************************************************** -->
+	<!-- *********************************************************************** -->
+	<!-- *********************************************************************** -->
+
+	<!-- This block of code is not supposed to be edited, but if you want to change the behavior of the slides, feel free to hack it ;) -->
+
+	<!-- Default Style -->
+	<style type='text/css'>
+	  * { margin: 0; padding: 0; }
+	  details {display: none;}
+	  body {
+	    width: 800px; height: 600px;
+	    margin-left: -400px; margin-top: -300px;
+	    position: absolute; top: 50%; left: 50%;
+	    overflow: hidden;
+	  }
+	  section {
+	    position: absolute;
+	    pointer-events: none;
+	    width: 100%; height: 100%;
+	  }
+	  section[aria-selected] { pointer-events: auto;}
+	  body {display: none}
+	  body.loaded {display: block}
+	</style>
 </head>
 <body>
 <!-- Content -->
@@ -75,35 +340,35 @@
 	
 </section>
 <section>
-	<img src="pics/logo_tuenti_positivo_color.png" id="tuenti_logo"/>
+	<img src="pics/logo_tuenti_positivo_color.png" id="tuenti_logo" alt="Tuenti"/>
 </section>
 <section class="fullscreen">
-	<img src="pics/spain_map.jpg"/>
+	<img src="pics/spain_map.jpg" alt="Social Graph - map of spain"/>
 </section>
 
 <section class="fullscreen">
-	<img src="pics/tuenti.jpg"/>
+	<img src="pics/tuenti.jpg" alt="Tuenti"/>
 </section>
 
 <section id="mobile_devices">
 	<table>
 		<tr>
-			<td><img src="pics/iphone.jpg"/></td>
-			<td><img src="pics/android.png"/></td>
-			<td><img src="pics/blackberry.jpg"/></td>
+			<td><img src="pics/iphone.jpg" alt="Iphone App"/></td>
+			<td><img src="pics/android.png" alt="Android App"/></td>
+			<td><img src="pics/blackberry.jpg" alt="Blackberry App"/></td>
 		</tr>
 	</table>
 	</section>
 
 <section class="fullscreen">
-	<img src="pics/tu.png"/>
+	<img src="pics/tu.png" alt="Tu"/>
 </section>
 
 <section class="rotated_images">
-	<img style="-moz-transform-origin:top right;-moz-transform:translate(470px, -20px) rotate(10deg);-webkit-transform-origin:top right;-webkit-transform: translate(470px, -20px) rotate(10deg);" src="pics/IMG_1361.jpg"/>
-	<img style="-moz-transform-origin:bottom left;-moz-transform:translate(100px, 170px) rotate(8deg);-webkit-transform: translate(100px, 170px) rotate(8deg);" src="pics/IMG_1364.jpg"/>
-	<img style="-moz-transform-origin:top left;-moz-transform:translate(20px, -50px) rotate(-13deg);-webkit-transform-origin:top left;-webkit-transform: translate(20px, -50px) rotate(-13deg); width:400px;" src="pics/IMG_1426.jpg"/>
-	<img style="-moz-transform-origin:bottom right;-moz-transform:translate(430px, 180px) rotate(-5deg);-webkit-transform-origin:bottom right;-webkit-transform: translatex(430px, 180px) rotate(-5deg);" src="pics/TUENTI_team.jpg"/>
+	<img style="-moz-transform-origin:top right;-moz-transform:translate(470px, -20px) rotate(10deg);-webkit-transform-origin:top right;-webkit-transform: translate(470px, -20px) rotate(10deg);" src="pics/IMG_1361.jpg" alt="Tuenti sofas"/>
+	<img style="-moz-transform-origin:bottom left;-moz-transform:translate(100px, 170px) rotate(8deg);-webkit-transform: translate(100px, 170px) rotate(8deg);" src="pics/IMG_1364.jpg" alt="scrum"/>
+	<img style="-moz-transform-origin:top left;-moz-transform:translate(20px, -50px) rotate(-13deg);-webkit-transform-origin:top left;-webkit-transform: translate(20px, -50px) rotate(-13deg); width:400px;" src="pics/IMG_1426.jpg" alt="Sales"/>
+	<img style="-moz-transform-origin:bottom right;-moz-transform:translate(430px, 180px) rotate(-5deg);-webkit-transform-origin:bottom right;-webkit-transform: translate(430px, 180px) rotate(-5deg);" src="pics/TUENTI_team.jpg" alt="Barcelona"/>
 	
 </section>
 
@@ -179,7 +444,6 @@
 		<li>Sockets</li>
 		<li>Concorrência</li>
 	</ul>
-	</p>
 	<p class="text_slide_p">Também necessita ser customizável para ajustes de baixo nível</p>
 
 </section>
@@ -248,6 +512,7 @@
 		<li>No Tuenti temos cerca de 90 servidores Memcached, cada um com cerca de 150k conexões abertas</li>
 		<li>Cada conexão TCP tem sua própria thread e buffers</li>
 		<li><a href="https://github.com/tuenti/memcached-tuenti-multiport/commit/50736adb879b687b59918bac2559e3a99116141b">Escrevemos um patch para usar UDP e diminuir consumo de CPU e memória</a></li>
+	</ul>
 </section>
 <section class="yuno">
 	<h2 class="relative">Processamento em batch</h2>
@@ -283,7 +548,7 @@
 <span class="variable">worker</span>.add_function(<span class="string">"resize"</span>, 
                 <span class="variable">my_resize_function</span>)
 <span class="reserved">while</span> (<span class="variable">worker</span>.work());
-</pre></code>
+</code></pre>
 </section>
 <section>
 	<h2>Linguagens de programação</h2>
@@ -320,7 +585,7 @@
 </section>
 
 <section class="fullscreen">
-	<img src="pics/javascript_the_good_parts.jpg"/>
+	<img src="pics/javascript_the_good_parts.jpg" alt="Javascript the good parts"/>
 </section>
 
 <section class="platypus-background">
@@ -356,7 +621,7 @@
 	
 </section>
 <section class="nyan">
-	<h2>¡Gracias!</h2>
+	<h2>Perguntas?</h2>
 	<ul class="text_list" style="top:220px;">
 		<li>Felipe Ribeiro &lt;<a href="mailto:felipernb@gmail.com">felipernb@gmail.com</a>&gt;</li>
 		<li><a href="http://twitter.com/felipernb">@felipernb</a></li>
@@ -364,273 +629,6 @@
 	<p class="text_slide_p" style="top:500px">Slides disponíveis em: <a href="http://feliperibeiro.com/slides/ensol2011">http://feliperibeiro.com/slides/ensol2011</a></p>
 </section>
 		
-	
-<!-- Style -->
-
-<style>
-  /* Transition effect */
-  section {
-      -moz-transition: top 400ms linear 0s;
-      -webkit-transition: top 400ms linear 0s;
-      -o-transition: top 400ms linear 0s;
-      -ms-transition: top 400ms linear 0s;
-      transition: top 400ms linear 0s;
-  }
-  section { top: -150%; }
-  section[aria-selected] { top: 0; }
-  section[aria-selected] ~ section { top: +150% }
-
-  @font-face { src: url(fonts/BebasNeue.otf); font-family: 'bebas'; }
-  a { color: inherit; }
-  a:hover {text-decoration: underline;}
-  body { font-family: 'bebas'; }
-  html { background-color: black; }
-  body { background-color: white; }
-  section > * { position: absolute; }
-
-  .rotated_images > img  {
-    -moz-box-shadow: 5px 5px 5px #333; 
-	-webkit-box-shadow: 5px 5px 5px #333;
-	width:300px;	 
-
-  }
-code {
-	font-family: Courier;
-	font-size: 30px;
-	left: 50px;
-	position: relative;
-	top: 150px;
-}
-.nyan {
-	background-image: url("pics/nyan.gif");
-	background-size:100%;
-	color:#FFF;
-}
-.nyan ul, .nyan p  {
-	color:#FFF;
-}
-
-.variable {
-	color: #0AA;
-}
-.string {
-	color: #F0C;
-	
-}
-.comment {
-	color: #AAA;
-	
-}
-.reserved {
-	color: #C00;
-	
-}
-	.relative {
-	position:relative;
-}
-
-  #tuenti_logo {
-	width:600px;
-	left:100px;
-	}
-
-  .plus_sign {
-	font-family:arial;
-	}
- 
-  #mobile_devices img {
-	width:240px;
-	margin:10px;
-  }
-
-  mark {
-    position: absolute;
-    top: 250px; left: 0;
-    display: block;
-    height: 100px;
-    width: 100px;
-    background-color: black;
-    color: white;
-    text-align: center;
-    font-size: 90px;
-  }
-  
-  #container {
-	top:120px;
-  }
-  .text_list, .text_list2, .features, .features2, p {
-      top: 250px;
-      left: 150px;
-      color: #C01801;
-      font-size: 70px;
-      list-style: none;
-
-  }
-
-  .text_list, .text_list2, p {
-	font-size:40px;	
-}
-.text_list2 {
-	list-style-type:square;
-	top:100px;
-}
-.text_list2 li {
-	padding-bottom:20px;
-}
- .features2, .text_slide_p {
-	position:relative;
-    list-style-type: square ;
-	top: 100px;
-  }
-.square_marker {
-   list-style: square inside;
-}
-.features2 {
-	padding-left: 60px;
-}
-.yuno {
-    background: url("pics/yuno.jpg") no-repeat scroll center bottom;
-    background-size: 400px;
-}
-.tricks {
-		background: url("pics/johnny_automatic_card_trick.png") no-repeat scroll right bottom;
-		background-size:350px;
-}
-.trollface {
-	background: url("pics/trollface.png") no-repeat scroll right bottom;
-	background-size:300px;
-}
-.linux-background {
-		background: url("pics/tux.png") no-repeat scroll 350px top;
-		background-size:200px;
-}
-.gearman-background {
-		background: url("pics/gearman_stack.png") no-repeat center 250px;
-}
-.platypus-background {
-		background: url("pics/perry_the_platypus.png") no-repeat scroll right top;
-		background-size:300px;
-}
-.tools {
-		background: url("pics/hand-tools.png") no-repeat scroll 450px bottom;
-		background-size:350px;
-}
-.webservers {
-		background: url("pics/webservers.png") no-repeat scroll center 400px;
-}
-p { width: 600px; }
-  .text_list em, .features em, p em {
-      color: #ccc;
-      font-style: normal;
-      font-size: 40px;
-      display: inline-block;
-      text-align: right;
-  }
-
-  section:first-of-type h1 {
-    font-size: 130px;
-    padding-top: 10px;
-    font-weight: normal;
-    top: 10px;
-    left: 20px;
-    width: 780px;
-    line-height: 160px;
-  }
-  section:first-of-type h2 {
-      font-size: 63px;
-  }
-
-  .site, h1 {
-      top: 0;
-      left: 150px;
-      font-size: 75px;
-      line-height: 600px;
-      vertical-align: middle;
-  }
-  h1 > em {
-      display: block;
-      text-align: left;
-      margin-top: -40px;
-      font-size: 40px;
-      line-height: 40px;
-      font-style: normal;
-  }
-
-  footer {
-    display: block;
-    text-align: right;
-    color: #C01801;
-    font-style: normal;
-    font-size: 60px;
-    bottom: 0; right: 10px;
-  }
-
-  img {
-      top: 150px;
-      left: 8px;
-      width: 290px;
-  }
-
-  .fullscreen > img,
-  .fullscreen > video {
-      top: 0px;
-      right: 0px;
-      width: 800px;
-      height: 600px;
-      display: block;
-  }
-  .fullscreen {
-      background-color: black;
-  }
-
-
-  #ten {
-    color: #C01801;
-    font-size: 150px;
-    vertical-align: bottom;
-    letter-spacing: -15px;
-    display: block;
-    position: absolute;;
-    left: 0px;
-    bottom: 25px;
-  }
-
-  h2 {
-      top: 150px;
-      font-size: 65px;
-      line-height: 60px;
-      padding-left: 130px;
-  }
-</style>
-
-<!-- {{{{ *****************  DZSlides CORE 2.0b1 *************************** -->
-<!-- *********************************************************************** -->
-<!-- *********************************************************************** -->
-<!-- *********************************************************************** -->
-<!-- *********************************************************************** -->
-
-<!-- This block of code is not supposed to be edited, but if you want to change the behavior of the slides, feel free to hack it ;) -->
-
-<!-- Default Style -->
-<style>
-  * { margin: 0; padding: 0; }
-  details {display: none;}
-  body {
-    width: 800px; height: 600px;
-    margin-left: -400px; margin-top: -300px;
-    position: absolute; top: 50%; left: 50%;
-    overflow: hidden;
-  }
-  section {
-    position: absolute;
-    pointer-events: none;
-    width: 100%; height: 100%;
-  }
-  section[aria-selected] { pointer-events: auto;}
-  body {display: none}
-  body.loaded {display: block}
-</style>
-
 <script>
   var friendWindows = [];
   var idx = 1;
@@ -780,9 +778,6 @@ p { width: 600px; }
         friendWindows[i].postMessage(JSON.stringify({method: "newslide", details: getDetails(idx), idx: idx}), document.location);
     }
   }
-  window.addEventListener("load", onload, false);
-  window.addEventListener("message", onmessage, false);
-  window.addEventListener("keydown", onkeydown, false);
 </script>
 </body>
 </html>
