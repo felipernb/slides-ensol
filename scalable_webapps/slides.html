@@ -63,7 +63,7 @@
 
 <section>
     <h1>Software Livre<em>em aplicações Web de larga escala</em></h1>
-    <footer>by <a href="http://twitter.com/felipernb">@felipernb</a></footer>
+    <footer><a href="http://twitter.com/felipernb">@felipernb</a></footer>
 </section>
 
 <section>
@@ -780,6 +780,9 @@ p { width: 600px; }
         friendWindows[i].postMessage(JSON.stringify({method: "newslide", details: getDetails(idx), idx: idx}), document.location);
     }
   }
+  window.addEventListener("load", onload, false);
+  window.addEventListener("message", onmessage, false);
+  window.addEventListener("keydown", onkeydown, false);
 </script>
 </body>
 </html>
