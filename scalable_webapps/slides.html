@@ -249,10 +249,16 @@
 		<li>Cada conexão TCP tem sua própria thread e buffers</li>
 		<li><a href="https://github.com/tuenti/memcached-tuenti-multiport/commit/50736adb879b687b59918bac2559e3a99116141b">Escrevemos um patch para usar UDP e diminuir consumo de CPU e memória</a></li>
 </section>
-<section>
+<section class="yuno">
 	<h2 class="relative">Processamento em batch</h2>
 	<ul class="text_list square_marker">
 		<li>Nem tudo precisa ser em real-time</li>
+	</ul>
+</section>
+
+<section>
+	<h2 class="relative">Processamento em batch</h2>
+	<ul class="text_list square_marker">
 		<li>Quando você faz o upload de uma foto no Flickr ou um vídeo no Youtube, o servidor Web coloca seu arquivo na fila para ser processado</li>
 	</ul>
 </section>
@@ -288,8 +294,8 @@
 		<li>Python escala? <em>NÃO</em></li>
 	</ul>
 </section>
-<section>
-	<ul class=features>
+<section class="trollface">
+	<ul class=features style="top:200px;">
 		<li>Linguagens não escalam.</li>
 		<li>Arquiteturas escalam!</li>
 	</ul>
@@ -336,7 +342,10 @@
 	<p class="text_slide_p">Para otimizar a esperiência do usuário, pense como ele se comporta e carregue antecipadamente o que ele irá ver em breve</p>		
 </section>
 <section class="tricks">
-	<p class="text_slide_p">Balanceamento de carga no lado cliente. O JavaScript já sabe para qual servidor fazer requisições</p>
+	<ul class="text_list2">
+		<li>Balanceamento de carga no lado cliente</li>
+		<li>O JavaScript já sabe para qual servidor fazer requisições</li>
+	</ul>
 </section>
 <section class="tricks">
 	<ul class="text_list2 square_marker" style="left:50px;">
@@ -346,18 +355,13 @@
 	</ul>
 	
 </section>
-<section>
-	<h2 class="relative">Mais em: <a href="http://dev.tuenti.com">dev.tuenti.com</a></h2>
-	<ul class="text_list">
-		<li>Slides disponíveis em: <a href="http://feliperibeiro.com/slides/ensol2011">http://feliperibeiro.com/slides/ensol2011</a></li>
-	</ul>
-</section>
-<section>
+<section class="nyan">
 	<h2>¡Gracias!</h2>
-	<ul class="text_list">
+	<ul class="text_list" style="top:220px;">
 		<li>Felipe Ribeiro &lt;<a href="mailto:felipernb@gmail.com">felipernb@gmail.com</a>&gt;</li>
 		<li><a href="http://twitter.com/felipernb">@felipernb</a></li>
 	</ul>
+	<p class="text_slide_p" style="top:500px">Slides disponíveis em: <a href="http://feliperibeiro.com/slides/ensol2011">http://feliperibeiro.com/slides/ensol2011</a></p>
 </section>
 		
 	
@@ -396,6 +400,14 @@ code {
 	left: 50px;
 	position: relative;
 	top: 150px;
+}
+.nyan {
+	background-image: url("pics/nyan.gif");
+	background-size:100%;
+	color:#FFF;
+}
+.nyan ul, .nyan p  {
+	color:#FFF;
 }
 
 .variable {
@@ -476,9 +488,17 @@ code {
 .features2 {
 	padding-left: 60px;
 }
+.yuno {
+    background: url("pics/yuno.jpg") no-repeat scroll center bottom;
+    background-size: 400px;
+}
 .tricks {
 		background: url("pics/johnny_automatic_card_trick.png") no-repeat scroll right bottom;
 		background-size:350px;
+}
+.trollface {
+	background: url("pics/trollface.png") no-repeat scroll right bottom;
+	background-size:300px;
 }
 .linux-background {
 		background: url("pics/tux.png") no-repeat scroll 350px top;
