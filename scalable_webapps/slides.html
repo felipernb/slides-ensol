@@ -642,9 +642,13 @@
     setSlide();
     document.body.className = "loaded";
     onresize();
-  }
+  };
 
   /* Handle keys */
+document.body.onclick = function(e) {
+	if (e.layerX > 400) forward();
+	else back();
+};
 
   window.onkeydown = function(e) {
     // Don't intercept keyboard shortcuts
@@ -670,7 +674,7 @@
         e.preventDefault();
         toggleContent();
     }
-  }
+  };
 
   /* Adapt the size of the slides to the window */
 
@@ -683,7 +687,7 @@
     document.body.style.OTransform = transform;
     document.body.style.msTransform = transform;
     document.body.style.transform = transform;
-  }
+  };
   function getDetails(idx) {
     var s = document.querySelector("section:nth-of-type("+ idx +")");
     var d = s.querySelector("details");
@@ -707,7 +711,7 @@
         idx = r[1];
         setSlide();
     }
-  }
+  };
 
   /* If a Video is present in this new slide, play it.
      If a Video is present in the previous slide, stop it. */
@@ -724,7 +728,7 @@
             }
         }
     }
-  }
+  };
 
   /* If the user change the slide number in the URL bar, jump
      to this slide. */
@@ -735,7 +739,7 @@
     if (newidx == idx) return;
     idx = newidx;
     setSlide();
-  }
+  };
 
   /* Slide controls */
 
